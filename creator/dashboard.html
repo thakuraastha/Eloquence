@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Creator Dashboard - Eloquence</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #d1d1d1;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .assessment-list {
+            margin-top: 2rem;
+        }
+
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .assessment-table th,
+        .assessment-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d1d1;
+        }
+
+        .assessment-table th {
+            color: white;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #d1d1d1;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .status-active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .status-draft {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">✨ Eloquence</a>
+            <div class="nav-links">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">Settings</a>
+                <a href="../signin.html" class="button button-secondary">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Creator Dashboard</h1>
+            <div class="header-actions">
+                <a href="create-assessment.html" class="button button-primary">Create New Assessment</a>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <a href="create-assessment.html" class="feature-card">
+                <div class="feature-icon">✍️</div>
+                <h3 class="feature-title">Create Assessment</h3>
+                <p class="feature-description">Design new communication assessments and evaluation criteria.</p>
+                <button class="button button-primary">Create New</button>
+            </a>
+
+            <a href="create-quiz.html" class="feature-card">
+                <div class="feature-icon">❓</div>
+                <h3 class="feature-title">Create Quiz</h3>
+                <p class="feature-description">Build quiz questions and practice exercises.</p>
+                <button class="button button-primary">Create Quiz</button>
+            </a>
+
+            <a href="results.html" class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">View Results</h3>
+                <p class="feature-description">Analyze test taker performance and generate reports.</p>
+                <button class="button button-primary">View Results</button>
+            </a>
+
+            <a href="templates.html" class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3 class="feature-title">Templates</h3>
+                <p class="feature-description">Access and manage assessment templates.</p>
+                <button class="button button-primary">View Templates</button>
+            </a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Active Assessments</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Total Test Takers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">92%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+        </div>
+
+        <div class="assessment-list">
+            <h2>Recent Assessments</h2>
+            <table class="assessment-table">
+                <thead>
+                    <tr>
+                        <th>Assessment Name</th>
+                        <th>Created Date</th>
+                        <th>Status</th>
+                        <th>Participants</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Public Speaking Fundamentals</td>
+                        <td>2024-01-15</td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                        <td>45</td>
+                        <td>
+                            <button class="button button-secondary">Edit</button>
+                            <button class="button button-secondary">View Results</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Business Communication Quiz</td>
+                        <td>2024-01-14</td>
+                        <td><span class="status-badge status-draft">Draft</span></td>
+                        <td>0</td>
+                        <td>
+                            <button class="button button-secondary">Edit</button>
+                            <button class="button button-secondary">Publish</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for buttons
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Prevent default if it's a link
+                    if (this.parentElement.tagName === 'A') {
+                        e.preventDefault();
+                    }
+                    // Handle button click
+                    console.log('Button clicked:', this.textContent.trim());
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

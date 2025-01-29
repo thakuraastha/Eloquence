@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eloquence - Master the Art of Communication</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                ✨ Eloquence
+            </a>
+            <div class="nav-links">
+                <a href="features.html">Features</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="signin.html" class="button button-primary">Logout</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate-fade-in">
+                Master the Art of 
+                <span class="gradient-text">Communication</span>
+            </h1>
+            <p class="animate-fade-in-up">
+                Enhance your speaking skills, build confidence, and become an exceptional 
+                communicator with our comprehensive platform.
+            </p>
+            <div class="button-group animate-fade-in-up">
+                <a href="index.html" class="button button-primary">
+                    Start Learning →
+                </a>
+                <a href="#demo" class="button button-secondary">
+                    Watch Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <div class="features-header">
+                <h2>Why Choose Eloquence?</h2>
+                <p>Our platform offers comprehensive tools and resources to help you become a confident and effective communicator.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Interactive Learning</h3>
+                    <p>Practice with real-time feedback and personalized recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Feedback</h3>
+                    <p>Get detailed insights and suggestions to improve your communication skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community Support</h3>
+                    <p>Connect with other learners and practice together in a supportive environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Responsive navigation
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

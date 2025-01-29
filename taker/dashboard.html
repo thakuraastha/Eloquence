@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Taker Dashboard - Eloquence</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #d1d1d1;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #d1d1d1;
+            font-size: 0.9rem;
+        }
+
+        .recent-activity {
+            margin-top: 2rem;
+        }
+
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d1d1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">✨ Eloquence</a>
+            <div class="nav-links">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">Settings</a>
+                <a href="../signin.html" class="button button-secondary">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome back, <span class="user-name">User</span>!</h1>
+            <div class="header-actions">
+                <a href="take-assessment.html" class="button button-primary">Take New Assessment</a>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <a href="take-assessment.html" class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">Take Assessment</h3>
+                <p class="feature-description">Start a new communication assessment to test and improve your skills.</p>
+                <button class="button button-primary">Start Assessment</button>
+            </a>
+
+            <a href="analytics.html" class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Analytics</h3>
+                <p class="feature-description">View detailed insights about your performance and progress.</p>
+                <button class="button button-primary">View Analytics</button>
+            </a>
+
+            <a href="prepare.html" class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3 class="feature-title">Prepare</h3>
+                <p class="feature-description">Access study materials and practice resources.</p>
+                <button class="button button-primary">Start Preparing</button>
+            </a>
+
+            <a href="quiz.html" class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Quiz Mode</h3>
+                <p class="feature-description">Test your knowledge with quick quizzes.</p>
+                <button class="button button-primary">Start Quiz</button>
+            </a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Assessments Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">85%</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Hours Practiced</div>
+            </div>
+        </div>
+
+        <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul class="activity-list">
+                <li class="activity-item">Completed Communication Assessment - Score: 92%</li>
+                <li class="activity-item">Finished Quiz Module: Public Speaking Basics</li>
+                <li class="activity-item">Started New Preparation Course</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch user data and update dashboard
+            const userName = localStorage.getItem('userName') || 'User';
+            document.querySelector('.user-name').textContent = userName;
+
+            // Add click handlers for buttons
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Prevent default if it's a link
+                    if (this.parentElement.tagName === 'A') {
+                        e.preventDefault();
+                    }
+                    // Handle button click
+                    console.log('Button clicked:', this.textContent.trim());
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

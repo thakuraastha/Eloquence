@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Dashboard - Eloquence</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-brand">Eloquence</div>
+        <div class="nav-links">
+            <a href="/creator/tests/create" class="nav-link">Create Test</a>
+            <a href="/creator/tests" class="nav-link">My Tests</a>
+            <a href="/profile" class="nav-link">Profile</a>
+            <button id="logoutBtn" class="nav-link">Logout</button>
+        </div>
+    </nav>
+
+    <main class="dashboard-content">
+        <h1>Creator Dashboard</h1>
+        
+        <section class="stats-section">
+            <h2>Your Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Tests Created</h3>
+                    <p id="testsCreatedCount">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Attempts</h3>
+                    <p id="totalAttempts">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Score</h3>
+                    <p id="averageScore">Loading...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-tests">
+            <h2>Recent Tests</h2>
+            <div id="recentTestsList" class="tests-grid">
+                <!-- Tests will be loaded here dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Check authentication
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+        }
+
+        // Fetch user stats
+        fetch('/api/users/stats', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('testsCreatedCount').textContent = data.testsCreated;
+            document.getElementById('totalAttempts').textContent = data.testsTaken;
+            document.getElementById('averageScore').textContent = 
+                data.averageScore ? `${data.averageScore.toFixed(1)}%` : 'N/A';
+        });
+
+        // Fetch recent tests
+        fetch('/api/tests/created', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => res.json())
+        .then(tests => {
+            const recentTestsList = document.getElementById('recentTestsList');
+            recentTestsList.innerHTML = tests.slice(0, 6).map(test => `
+                <div class="test-card">
+                    <h3>${test.title}</h3>
+                    <p>${test.description.substring(0, 100)}...</p>
+                    <div class="test-card-footer">
+                        <span>Type: ${test.type}</span>
+                        <span>Score: ${test.totalScore}</span>
+                    </div>
+                    <a href="/creator/tests/${test._id}" class="view-test-btn">View Details</a>
+                </div>
+            `).join('');
+        });
+
+        // Handle logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = '/login.html';
+        });
+    </script>
+</body>
+</html> 
